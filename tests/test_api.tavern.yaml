@@ -14,3 +14,7 @@ stages:
         - nome: !anystr
           preco: !anyfloat
           estoque: !anyint
+
+        - nome: !anystr
+          preco: !anyfloat
+          estoque: !anyint
