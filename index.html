@@ -2,35 +2,145 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>GeekStore E-commerce</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeekStore</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ffd6e7, #ffeef5);
+        }
+
+        .container {
+            width: 340px;
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff4f9a;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        label {
+            display: block;
+            margin-top: 14px;
+            margin-bottom: 6px;
+            color: #444;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 11px;
+            border-radius: 12px;
+            border: 2px solid #ffd1e6;
+            outline: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #ff69b4;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 13px;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient(90deg, #ff69b4, #ff85c1);
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.02);
+            opacity: 0.95;
+        }
+
+        #mensagem {
+            text-align: center;
+            margin-bottom: 10px;
+            min-height: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .footer {
+            margin-top: 18px;
+            text-align: center;
+            color: #999;
+            font-size: 11px;
+        }
+
+    </style>
 </head>
+
 <body>
 
-    <h1>Bem-vindo à GeekStore</h1>
+    <div class="container">
 
-    <div id="mensagem" style="color: green; font-weight: bold; margin-bottom: 15px;"></div>
+        <h1>🩷 GeekStore</h1>
 
-    <label for="input-produto">Nome do Produto:</label>
+        <div id="mensagem"></div>
 
-    <input type="text" id="input-produto" placeholder="Ex: teclado">
+        <label for="input-produto">Produto</label>
 
-    <br><br>
+        <input
+            type="text"
+            id="input-produto"
+            placeholder="Ex: teclado"
+        >
 
-    <label for="input-cartao">Número do Cartão:</label>
+        <label for="input-cartao">Cartão</label>
 
-    <input type="text" id="input-cartao" placeholder="0000 0000 0000 0000">
+        <input
+            type="text"
+            id="input-cartao"
+            placeholder="0000 0000 0000 0000"
+        >
 
-    <br><br>
+        <label for="input-cupom">Cupom</label>
 
-    <label for="input-cupom">Cupom de Desconto:</label>
+        <input
+            type="text"
+            id="input-cupom"
+            placeholder="Ex: GEEK20"
+        >
 
-    <input type="text" id="input-cupom" placeholder="Ex: GEEK20">
+        <button
+            id="btn-comprar"
+            onclick="fazerCompra()"
+        >
+            Finalizar Compra ✨
+        </button>
 
-    <br><br>
+        <div class="footer">
+            Projeto ATS AP2 • GeekStore
+        </div>
 
-    <button id="btn-comprar" onclick="fazerCompra()">
-        Comprar
-    </button>
+    </div>
 
     <script>
 
@@ -49,8 +159,7 @@
                 document.getElementById('mensagem');
 
             msgDiv.innerText = "Processando...";
-
-            msgDiv.style.color = "blue";
+            msgDiv.style.color = "#ff69b4";
 
             setTimeout(async () => {
 
@@ -80,7 +189,7 @@
                         msgDiv.innerText =
                             `Compra aprovada com sucesso! Valor pago: R$ ${data.valor_pago.toFixed(2)}`;
 
-                        msgDiv.style.color = "green";
+                        msgDiv.style.color = "#ff1493";
 
                     } else {
 
@@ -89,7 +198,7 @@
                         msgDiv.innerText =
                             "Erro: " + errorData.detail;
 
-                        msgDiv.style.color = "red";
+                        msgDiv.style.color = "#ff4d6d";
                     }
 
                 } catch (error) {
@@ -97,7 +206,7 @@
                     msgDiv.innerText =
                         "Erro na conexão com o servidor.";
 
-                    msgDiv.style.color = "red";
+                    msgDiv.style.color = "#ff4d6d";
                 }
 
             }, 1500);
